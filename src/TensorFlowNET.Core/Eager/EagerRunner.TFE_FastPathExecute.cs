@@ -142,6 +142,8 @@ namespace Tensorflow.Eager
             }
 
             var retVals = new SafeEagerTensorHandle[num_retvals];
+            #region serafeim
+            #endregion
             c_api.TFE_Execute(op, retVals, out num_retvals, status.Handle);
             status.Check(true);
 
