@@ -43,6 +43,7 @@ steps:
 #     projectKey: 'MSolve.FEM'
 #     extraProperties: 'sonar.cs.opencover.reportsPaths=$(Build.SourcesDirectory)/coverage/coverage.opencover.xml'
 - task: UseGitVersion@5
+  displayName: "Git Version"
   inputs:
     versionSpec: '5.x'
     includePrerelease: true
@@ -58,6 +59,14 @@ steps:
     arguments: '-p:Version=$(GitVersion.SemVer)'
     verbosityPack: 'Minimal'
     configuration: '$(buildConfiguration)'
+
+- task: PublishSymbols@2
+  displayName: "Publish symbols to Azure Devops artifacts"
+  inputs:
+    DetailedLog: true
+    SearchPattern: '**/bin/**/*.pdb'
+    IndexSources: false
+    SymbolServerType: 'TeamServices'
 
 - task: DotNetCoreCLI@2
   enabled: false
