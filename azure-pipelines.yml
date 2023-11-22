@@ -54,7 +54,7 @@ steps:
   displayName: "Build projects"
   inputs:
     command: 'build'
-    projects: '!redist/*.csproj'
+#     projects: '!redist/*.csproj'
     arguments: '-p:Version=$(GitVersion.SemVer)'
     verbosityPack: 'Minimal'
     configuration: '$(buildConfiguration)'
@@ -95,6 +95,7 @@ steps:
   condition: ne(variables['Build.Reason'], 'PullRequest')
   inputs:
     command: 'pack'
+    packagesToPack: '**/*.csproj;!redist/*.csproj'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'GitVersion.SemVer'
     verbosityPack: 'Minimal'
