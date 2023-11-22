@@ -54,6 +54,7 @@ steps:
   displayName: "Build projects"
   inputs:
     command: 'build'
+    projects: '!redist/*.csproj'
     arguments: '-p:Version=$(GitVersion.SemVer)'
     verbosityPack: 'Minimal'
     configuration: '$(buildConfiguration)'
