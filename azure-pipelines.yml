@@ -98,7 +98,7 @@ steps:
     packagesToPack: '**/*.csproj;!**/*.Redist.csproj'
     versioningScheme: 'byEnvVar'
     versionEnvVar: 'GitVersion.SemVer'
-    verbosityPack: 'Minimal'
+    verbosityPack: 'Diagnostic'
 
 - task: PublishBuildArtifacts@1
   name: publishToFeed
